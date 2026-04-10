@@ -2,54 +2,25 @@
 @import "./partials/reset";
 @import "./partials/vars";
 @import "./partials/mixins";
+@import "./partials/header";
+@import "./partials/footer";
 
 * {
     border: 1px solid tomato;
+   
+    overflow-y: hidden;
 }
 
 :root {
     @include text;
 }
 
-.header {
+body {
     display: flex;
-
-    // flex-direction: row; // row, column, row-reverse, column-reverse
-    // flex-wrap: nowrap;   // nowrap, wrap, wrap-reverse
-    justify-content: flex-start; // fs, fe, center, sp
-    align-items: flex-start; // fs, fe, center, baseline
-    align-content: flex-start; // ..
-
+    flex-direction: column;
     justify-content: center;
-    padding: 0.75rem;
-    background-color: #ffc017;
-    border-bottom: 1px solid #000;
-
-    .header_center {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 1180px;
-
-        .header_logo {
-            display: flex;
-
-            img {}
-        }
-
-        .header_nav {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-
-            .header_nav_item {
-                .btn {
-                    padding: 0.5rem 0.75rem;
-                    background-color: #000;
-                    color: white;
-                    border-radius: 9999999px;
-                }
-            }
-        }
-    }
+    align-items: center;
+    height: 100vh;
+    background-color: aqua;
+    
 }

@@ -1,0 +1,12 @@
+header {
+    margin-bottom: .5rem;
+    p{
+        color: tomato;
+    }
+    h1 {
+        color: $base-color;
+        @include h1;
+    }
+    
+
+}
