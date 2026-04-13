@@ -70,7 +70,7 @@ function create() {
 
     this.physics.add.collider(player, plataforms);
 
-    //llego el momento de meter una camara que siga al jugador, porque sino esto es pochisimo, y no se puede ni jugar.
+    //le pongo una camara que siga al jugador, porque sino esto es pochisimo, y no se puede ni jugar.
     var camera = this.cameras.getCamera(name);
     camera.startFollow(player);
 
