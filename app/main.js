@@ -24,7 +24,7 @@ const game = new Phaser.Game(config);
 
 function preload() {
     // Aquí cargo assets para el juego, como imágenes, sonidos, etc...
-
+    this.load.image('espacio', 'assets/img/FondoPrototipo.png');
 }
 
 let player;
@@ -35,7 +35,7 @@ let cursors;
 function create() {
     // Aquí creo los objetos del juego, como sprites, texto, etc...
     this.add.text(100, 100, '¡happy coding!', { font: '48px Arial', fill: '#ffffff' });
-
+    const ALTO_FONDO = 1200;
     //Además no tiene sentido que meta elementos sueltos, los tengo que meter en funciones para poder manipularlos después.
     /*
     const suelo = this.add.rectangle(400, 580, 800, 40, 0x00ff00);
@@ -47,10 +47,10 @@ function create() {
     cursors = this.input.keyboard.createCursorKeys();
     plataforms = this.physics.add.staticGroup();
     const niveles = [
-        { x: 400, y: 480, w: 800, h: 40 }, // El suelo
-        { x: 400, y: 400, w: 200, h: 20 }, // Plataforma 1
-        { x: 600, y: 300, w: 150, h: 20 }, // Plataforma 2
-        { x: 200, y: 250, w: 100, h: 20 }  // Plataforma 3
+        { x: 400, y: ALTO_FONDO - 480, w: 800, h: 40 }, // El suelo
+        { x: 400, y: ALTO_FONDO - 400, w: 200, h: 20 }, // Plataforma 1
+        { x: 600, y: ALTO_FONDO - 300, w: 150, h: 20 }, // Plataforma 2
+        { x: 200, y: ALTO_FONDO - 250, w: 100, h: 20 }  // Plataforma 3
     ];
     
     niveles.forEach(nivel => {
@@ -63,13 +63,17 @@ function create() {
         }
     });
 
-
+    
     player = this.add.rectangle(100, 350, 50, 50, 0x0000ff);
     this.physics.add.existing(player);
     player.body.setCollideWorldBounds(true);
 
     this.physics.add.collider(player, plataforms);
 
+    let bg = this.add.image(0, 0, 'espacio').setOrigin(0, 0);
+    this.physics.world.setBounds(0, 0, 3200, 1200);
+    this.cameras.main.setBounds(0, 0, 3200, 1200);
+    bg.setScrollFactor(0.5);
     //le pongo una camara que siga al jugador, porque sino esto es pochisimo, y no se puede ni jugar.
     var camera = this.cameras.getCamera(name);
     camera.startFollow(player);
