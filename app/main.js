@@ -25,7 +25,11 @@ const game = new Phaser.Game(config);
 function preload() {
     // Aquí cargo assets para el juego, como imágenes, sonidos, etc...
     this.load.image('espacio', 'assets/img/FondoPrototipo.png');
-    thos.load.spritesheet('player_run', 'assets/img/PersonajeAnimacionLateral.png', { frameWidth: 64, frameHeight: 64 });
+    this.load.spritesheet('player_run', 'assets/img/PersonajeAnimacionLateral.png', 
+        { frameWidth: 64, 
+        frameHeight: 64 
+
+        });
 
 }
 
@@ -49,12 +53,13 @@ function create() {
     cursors = this.input.keyboard.createCursorKeys();
     plataforms = this.physics.add.staticGroup();
     const niveles = [
-        { x: 400, y: ALTO_FONDO - 80, w: 800, h: 40 }, // El suelo
-        { x: 400, y: ALTO_FONDO - 400, w: 200, h: 20 }, // Plataforma 1
-        { x: 600, y: ALTO_FONDO - 300, w: 150, h: 20 }, // Plataforma 2
-        { x: 200, y: ALTO_FONDO - 250, w: 100, h: 20 }  // Plataforma 3
+        { x: 660, y: ALTO_FONDO - 40, w: 1200, h: 40 }, // El suelo
+        { x: 660, y: ALTO_FONDO - 460, w: 1200, h: 20 }, // Plataforma 1
+        { x: 500, y: ALTO_FONDO - 300, w: 150, h: 20 }, // Plataforma 2
+        { x: 200, y: ALTO_FONDO - 200, w: 100, h: 20 },  // Plataforma 3
+        { x: 500, y: ALTO_FONDO - 140, w: 20, h: 200 }  // Plataforma 4
     ];
-    
+    // otra ilustración para las plataformas y evitar el parralax.
     niveles.forEach(nivel => {
         const plataforma = this.add.rectangle(nivel.x, nivel.y, nivel.w, nivel.h, );// la ideal es meter una imagen y luego el colisionador invisible, por eso he quitado el color.
         
@@ -67,13 +72,14 @@ function create() {
 
     this.anims.create({
         key: 'correr',
-        frames: this.anims.generateFrameNumbers('player_run', {start: 0, end: 7}),
+        frames: this.anims.generateFrameNumbers('player_run', {start: 0, end: 6}),
         frameRate: 24,
         repeat: -1
     });
 
 
-    player = this.physics.add.sprite(100, ALTO_FONDO - 350, 'player_run');
+    player = this.physics.add.sprite(100, ALTO_FONDO - 150, 'player_run');
+    player.setDepth(10);
     //this.physics.add.existing(player);
     player.body.setCollideWorldBounds(true);
 
