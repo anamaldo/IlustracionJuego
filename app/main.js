@@ -25,6 +25,8 @@ const game = new Phaser.Game(config);
 function preload() {
     // Aquí cargo assets para el juego, como imágenes, sonidos, etc...
     this.load.image('espacio', 'assets/img/FondoPrototipo.png');
+    thos.load.spritesheet('player_run', 'assets/img/PersonajeAnimacionLateral.png', { frameWidth: 64, frameHeight: 64 });
+
 }
 
 let player;
@@ -47,7 +49,7 @@ function create() {
     cursors = this.input.keyboard.createCursorKeys();
     plataforms = this.physics.add.staticGroup();
     const niveles = [
-        { x: 400, y: ALTO_FONDO - 480, w: 800, h: 40 }, // El suelo
+        { x: 400, y: ALTO_FONDO - 80, w: 800, h: 40 }, // El suelo
         { x: 400, y: ALTO_FONDO - 400, w: 200, h: 20 }, // Plataforma 1
         { x: 600, y: ALTO_FONDO - 300, w: 150, h: 20 }, // Plataforma 2
         { x: 200, y: ALTO_FONDO - 250, w: 100, h: 20 }  // Plataforma 3
@@ -63,14 +65,21 @@ function create() {
         }
     });
 
-    
-    player = this.add.rectangle(100, 350, 50, 50, 0x0000ff);
-    this.physics.add.existing(player);
+    this.anims.create({
+        key: 'correr',
+        frames: this.anims.generateFrameNumbers('player_run', {start: 0, end: 7}),
+        frameRate: 24,
+        repeat: -1
+    });
+
+
+    player = this.physics.add.sprite(100, ALTO_FONDO - 350, 'player_run');
+    //this.physics.add.existing(player);
     player.body.setCollideWorldBounds(true);
 
     this.physics.add.collider(player, plataforms);
 
-    let bg = this.add.image(0, 0, 'espacio').setOrigin(0, 0);
+    let bg = this.add.image(0, -300, 'espacio').setOrigin(0, 0);
     this.physics.world.setBounds(0, 0, 3200, 1200);
     this.cameras.main.setBounds(0, 0, 3200, 1200);
     bg.setScrollFactor(0.5);
@@ -85,10 +94,18 @@ function update (){
     // Aquí actualizo la lógica del juego, como el movimiento de los personajes, etc...
     if (cursors.left.isDown) {
         player.body.setVelocityX(-160);
-    } else if (cursors.right.isDown) {
+        player.anims.play('correr', true);
+        player.flipX = true;
+    } 
+    else if (cursors.right.isDown) {
         player.body.setVelocityX(160);
-    } else {
+        player.anims.play('correr', true);
+        player.flipX = false;
+    } 
+    else {
         player.body.setVelocityX(0);
+//me falta el iddle
+        player.anims.stop();
     }
     if (cursors.up.isDown && player.body.touching.down) {
         player.body.setVelocityY(-330);

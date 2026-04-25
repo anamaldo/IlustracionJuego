@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/anamaldo/IlustracionJuego/issues"
   },
-  "homepage": "https://github.com/anamaldo/IlustracionJuego#readme"
+  "homepage": "https://github.com/anamaldo/IlustracionJuego#readme",
+  "dependencies": {
+    "phaser": "^4.0.0",
+    "sass": "^1.99.0"
+  }
 }
