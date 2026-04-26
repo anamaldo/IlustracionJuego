@@ -40,7 +40,6 @@ let cursors;
 
 function create() {
     // Aquí creo los objetos del juego, como sprites, texto, etc...
-    this.add.text(100, 100, '¡happy coding!', { font: '48px Arial', fill: '#ffffff' });
     const ALTO_FONDO = 1200;
     //Además no tiene sentido que meta elementos sueltos, los tengo que meter en funciones para poder manipularlos después.
     /*
@@ -53,11 +52,11 @@ function create() {
     cursors = this.input.keyboard.createCursorKeys();
     plataforms = this.physics.add.staticGroup();
     const niveles = [
-        { x: 660, y: ALTO_FONDO - 40, w: 1200, h: 40 }, // El suelo
+        { x: 1600, y: ALTO_FONDO - 40, w: 3200, h: 40 }, // El suelo
         { x: 660, y: ALTO_FONDO - 460, w: 1200, h: 20 }, // Plataforma 1
         { x: 500, y: ALTO_FONDO - 300, w: 150, h: 20 }, // Plataforma 2
         { x: 200, y: ALTO_FONDO - 200, w: 100, h: 20 },  // Plataforma 3
-        { x: 500, y: ALTO_FONDO - 140, w: 20, h: 200 }  // Plataforma 4
+        { x: 500, y: ALTO_FONDO - 120, w: 20, h: 200 }  // Plataforma 4
     ];
     // otra ilustración para las plataformas y evitar el parralax.
     niveles.forEach(nivel => {
@@ -85,10 +84,11 @@ function create() {
 
     this.physics.add.collider(player, plataforms);
 
-    let bg = this.add.image(0, -300, 'espacio').setOrigin(0, 0);
+    let bg = this.add.image(0, 0, 'espacio').setOrigin(0, 0);
     this.physics.world.setBounds(0, 0, 3200, 1200);
     this.cameras.main.setBounds(0, 0, 3200, 1200);
-    bg.setScrollFactor(0.5);
+   
+    bg.setDepth(-20);
     //le pongo una camara que siga al jugador, porque sino esto es pochisimo, y no se puede ni jugar.
     var camera = this.cameras.getCamera(name);
     camera.startFollow(player);
@@ -99,12 +99,12 @@ function create() {
 function update (){
     // Aquí actualizo la lógica del juego, como el movimiento de los personajes, etc...
     if (cursors.left.isDown) {
-        player.body.setVelocityX(-160);
+        player.body.setVelocityX(-260);
         player.anims.play('correr', true);
         player.flipX = true;
     } 
     else if (cursors.right.isDown) {
-        player.body.setVelocityX(160);
+        player.body.setVelocityX(260);
         player.anims.play('correr', true);
         player.flipX = false;
     } 
