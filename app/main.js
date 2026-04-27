@@ -24,14 +24,20 @@ const game = new Phaser.Game(config);
 
 function preload() {
     // Aquí cargo assets para el juego, como imágenes, sonidos, etc...
-    this.load.image('espacio', 'assets/img/FondoPrototipo.png');
+    this.load.image('espacio', 'assets/img/FondoBien.png');
     this.load.spritesheet('player_run', 'assets/img/PersonajeAnimacionLateral.png', 
         { frameWidth: 64, 
         frameHeight: 64 
 
-        });
+    });
 
-}
+    this.load.spritesheet('player_idle', 'assets/img/PersobajeIdle.png',
+        { frameWidth: 64, 
+        frameHeight: 64
+    });
+
+    this.load.image('marco', 'assets/img/FondoMarco.png');
+};
 
 let player;
 let plataforms;
@@ -68,7 +74,7 @@ function create() {
             plataforma.body.updateFromGameObject();
         }
     });
-
+    //creo la animación de correr, que posteriormente ira la de idle
     this.anims.create({
         key: 'correr',
         frames: this.anims.generateFrameNumbers('player_run', {start: 0, end: 6}),
@@ -76,6 +82,13 @@ function create() {
         repeat: -1
     });
 
+    //ya tengo la animación cuando esta parado. Que se aplica en el bucle de update
+    this.anims.create({
+        key: 'idle',
+        frames: this.anims.generateFrameNumbers('player_idle', {start: 0, end: 7}),
+        frameRate: 8,
+        repeat: -1
+    });
 
     player = this.physics.add.sprite(100, ALTO_FONDO - 150, 'player_run');
     player.setDepth(10);
@@ -85,13 +98,18 @@ function create() {
     this.physics.add.collider(player, plataforms);
 
     let bg = this.add.image(0, 0, 'espacio').setOrigin(0, 0);
+    bg.setDepth(-20);
+    let marco = this.add.image(0, 0, 'marco').setOrigin(0, 0);
+    marco.setDepth(20);
+
     this.physics.world.setBounds(0, 0, 3200, 1200);
     this.cameras.main.setBounds(0, 0, 3200, 1200);
    
-    bg.setDepth(-20);
+    
     //le pongo una camara que siga al jugador, porque sino esto es pochisimo, y no se puede ni jugar.
-    var camera = this.cameras.getCamera(name);
-    camera.startFollow(player);
+    this.cameras.main.startFollow(player, true, 0.1, 0.1);
+    player.setOrigin(0.5, 0.5); 
+    //camera.startFollow(player);
 
     
 }
@@ -110,9 +128,10 @@ function update (){
     } 
     else {
         player.body.setVelocityX(0);
-//me falta el iddle
-        player.anims.stop();
+    //me falta el iddle
+        player.anims.play('idle', true);
     }
+    //aqui pondria la animacion de salto, lo dejo para mas adelante.
     if (cursors.up.isDown && player.body.touching.down) {
         player.body.setVelocityY(-330);
     }
