@@ -1,4 +1,5 @@
 
+
 const config = {
     type: Phaser.AUTO,
     width: 800,
@@ -90,7 +91,7 @@ function create() {
         repeat: -1
     });
 
-    player = this.physics.add.sprite(100, ALTO_FONDO - 150, 'player_run');
+    player = this.physics.add.sprite(120, ALTO_FONDO - 120, 'player_run');
     player.setDepth(10);
     //this.physics.add.existing(player);
     player.body.setCollideWorldBounds(true);
@@ -101,7 +102,7 @@ function create() {
     bg.setDepth(-20);
     let marco = this.add.image(0, 0, 'marco').setOrigin(0, 0);
     marco.setDepth(20);
-
+    //situo los limites de la camara y del mundo
     this.physics.world.setBounds(0, 0, 3200, 1200);
     this.cameras.main.setBounds(0, 0, 3200, 1200);
    

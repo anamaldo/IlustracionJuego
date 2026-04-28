@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/anamaldo/IlustracionJuego#readme",
   "dependencies": {
-    "phaser": "^4.0.0",
+    "phaser": "^3.60.0",
     "sass": "^1.99.0"
   }
 }
