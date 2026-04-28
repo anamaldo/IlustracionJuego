@@ -58,7 +58,7 @@ function create() {
     //aqui viene un sistema de luces o ilumunadores
     this.lights.enable();
     this.lights.setAmbientColor(0x333333);
-
+    this.focoPersonaje = this.lights.addLight(0, 0, 200).setColor(0xffffff).setIntensity(1.5);
     //esto es aburridisimo, voy a crear una lista para meter coordenadas y tamaños de los diferentes colisionadores (suelos o paredes).
     cursors = this.input.keyboard.createCursorKeys();
     plataforms = this.physics.add.staticGroup();
@@ -143,4 +143,7 @@ function update (){
         player.body.setVelocityY(-330);
     }
 
+    //actualizo la posicion del foco para que siga al personaje
+    this.focoPersonaje.x = player.x;
+    this.focoPersonaje.y = player.y;
 }
