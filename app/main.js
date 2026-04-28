@@ -55,6 +55,10 @@ function create() {
     plataforms.add(suelo);
     plataforms.add(piso);
     */
+    //aqui viene un sistema de luces o ilumunadores
+    this.lights.enable();
+    this.lights.setAmbientColor(0x333333);
+
     //esto es aburridisimo, voy a crear una lista para meter coordenadas y tamaños de los diferentes colisionadores (suelos o paredes).
     cursors = this.input.keyboard.createCursorKeys();
     plataforms = this.physics.add.staticGroup();
@@ -93,6 +97,7 @@ function create() {
 
     player = this.physics.add.sprite(120, ALTO_FONDO - 120, 'player_run');
     player.setDepth(10);
+    //player.setPipeline('Light2D'); // Esto hace que el sprite del jugador sea afectado por las luces.
     //this.physics.add.existing(player);
     player.body.setCollideWorldBounds(true);
 
@@ -100,6 +105,7 @@ function create() {
 
     let bg = this.add.image(0, 0, 'espacio').setOrigin(0, 0);
     bg.setDepth(-20);
+    bg.setPipeline('Light2D'); 
     let marco = this.add.image(0, 0, 'marco').setOrigin(0, 0);
     marco.setDepth(20);
     //situo los limites de la camara y del mundo
