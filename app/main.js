@@ -39,6 +39,7 @@ function preload() {
 
     this.load.image('cartel', 'assets/img/ItemsCartel.png');
     this.load.image('marco', 'assets/img/FondoMarco.png');
+    this.load.image('suelo', 'assets/img/PlataformasPrototipo.png');
 
 };
 
@@ -49,7 +50,8 @@ let cursors;
 
 function create() {
     // Aquí creo los objetos del juego, como sprites, texto, etc...
-    const ALTO_FONDO = 1200; //una solución a que no se colocaba el fondo bien, pero es ineficiente. 
+    //const ALTO_FONDO = 1200; //una solución a que no se colocaba el fondo bien, pero es ineficiente. 
+    const pY = (y) => 1200 - y;
     //Además no tiene sentido que meta elementos sueltos, los tengo que meter en funciones para poder manipularlos después.
     /*
     const suelo = this.add.rectangle(400, 580, 800, 40, 0x00ff00);
@@ -65,11 +67,13 @@ function create() {
     cursors = this.input.keyboard.createCursorKeys();
     plataforms = this.physics.add.staticGroup();
     const niveles = [
-        { x: 1600, y: ALTO_FONDO - 40, w: 3200, h: 40 }, // El suelo
-        { x: 660, y: ALTO_FONDO - 460, w: 1200, h: 20 }, // Plataforma 1
-        { x: 500, y: ALTO_FONDO - 300, w: 150, h: 20 }, // Plataforma 2
-        { x: 200, y: ALTO_FONDO - 200, w: 100, h: 20 },  // Plataforma 3
-        { x: 500, y: ALTO_FONDO - 120, w: 20, h: 200 }  // Plataforma 4
+        { x: 1600, y: pY(40), w: 3200, h: 40 }, // Planta 0
+        { x: 435, y: pY(590), w: 750, h: 20 }, // Planta 1
+        { x: 200, y: pY(200), w: 100, h: 20 },  // Plataforma 2
+        { x: 500, y: pY(300), w: 150, h: 20 }, // Plataforma 3
+        { x: 1000, y: pY(400), w: 425, h: 20 }, // Plataforma 4
+
+        { x: 500, y: pY(120), w: 20, h: 200 }  // Columna 1
     ];
     // otra ilustración para las plataformas y evitar el parralax.
     niveles.forEach(nivel => {
@@ -97,7 +101,7 @@ function create() {
         repeat: -1
     });
 
-    player = this.physics.add.sprite(120, ALTO_FONDO - 120, 'player_run');
+    player = this.physics.add.sprite(120, pY(120), 'player_run');
     player.setDepth(10);
     //player.setPipeline('Light2D'); // Esto hace que el sprite del jugador sea afectado por las luces.
     //this.physics.add.existing(player);
@@ -110,14 +114,20 @@ function create() {
     bg.setPipeline('Light2D'); 
     let marco = this.add.image(0, 0, 'marco').setOrigin(0, 0);
     marco.setDepth(20);
+    let plataformaImg = this.add.image(0, 0, 'suelo').setOrigin(0, 0);
+    plataformaImg.setDepth(10);
     //situo los limites de la camara y del mundo
     this.physics.world.setBounds(0, 0, 3200, 1200);
     this.cameras.main.setBounds(0, 0, 3200, 1200);
     
-    let cartel = this.add.image( 400, ALTO_FONDO - 90, 'cartel');
+    let cartel = this.add.image( 400, pY(90), 'cartel');
+    let cartel2 = this.add.image( 90, pY(630), 'cartel');
     cartel.setPipeline('Light2D');
     cartel.setDepth(5);
     cartel.setScale(64 / 300); 
+    cartel2.setPipeline('Light2D');
+    cartel2.setDepth(5);
+    cartel2.setScale(64 / 300); 
     
     //le pongo una camara que siga al jugador, porque sino esto es pochisimo, y no se puede ni jugar.
     this.cameras.main.startFollow(player, true, 0.1, 0.1);
