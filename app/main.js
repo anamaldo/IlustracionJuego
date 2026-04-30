@@ -4,7 +4,7 @@ const config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600, //quiero que la relacion de aspecto sea de 4:3, por la relacion del contenido
-    parent: 'game-container', 
+    parent: 'game-container1', 
     physics: {
         default: 'arcade',
         arcade: {

@@ -68,6 +68,11 @@ meter {
 
 header {
   margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 header p {
   color: tomato;
