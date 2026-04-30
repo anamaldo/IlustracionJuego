@@ -1,15 +1,17 @@
 header {
-    margin-bottom: .5rem;
+    margin: 1rem  .5rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between; 
     align-items: center;
-    width: 100vh;
+    display: grid;
+    grid-column: 2 / 3;
+
     p{
         color: tomato;
     }
     h1 {
-        color: $base-color;
+        color: $white;
         @include h1;
     }
     

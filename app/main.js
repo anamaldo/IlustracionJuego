@@ -37,7 +37,9 @@ function preload() {
         frameHeight: 64
     });
 
+    this.load.image('cartel', 'assets/img/ItemsCartel.png');
     this.load.image('marco', 'assets/img/FondoMarco.png');
+
 };
 
 let player;
@@ -47,7 +49,7 @@ let cursors;
 
 function create() {
     // Aquí creo los objetos del juego, como sprites, texto, etc...
-    const ALTO_FONDO = 1200;
+    const ALTO_FONDO = 1200; //una solución a que no se colocaba el fondo bien, pero es ineficiente. 
     //Además no tiene sentido que meta elementos sueltos, los tengo que meter en funciones para poder manipularlos después.
     /*
     const suelo = this.add.rectangle(400, 580, 800, 40, 0x00ff00);
@@ -112,6 +114,10 @@ function create() {
     this.physics.world.setBounds(0, 0, 3200, 1200);
     this.cameras.main.setBounds(0, 0, 3200, 1200);
     
+    let cartel = this.add.image( 400, ALTO_FONDO - 90, 'cartel');
+    cartel.setPipeline('Light2D');
+    cartel.setDepth(5);
+    cartel.setScale(64 / 300); 
     
     //le pongo una camara que siga al jugador, porque sino esto es pochisimo, y no se puede ni jugar.
     this.cameras.main.startFollow(player, true, 0.1, 0.1);
@@ -147,3 +153,5 @@ function update (){
     this.focoPersonaje.x = player.x;
     this.focoPersonaje.y = player.y;
 }
+
+//a parte de que algunos elementos se tienen que organizar y crear asi, también he tomado como referencia la metodologia que aplique el semestre pasado con Mikel en la asignatura de diseño de videojuegos. 

@@ -17,10 +17,20 @@
 
 body {
     display: flex;
+    display: grid;
+    grid-template-columns: 1fr 800px 1fr;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color:rgb(87, 87, 87);
     
+    .home {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;   
+        
+        grid-column: 2 / 3;
+        
+    }
 }
