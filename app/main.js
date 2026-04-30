@@ -58,7 +58,7 @@ function create() {
     //aqui viene un sistema de luces o ilumunadores
     this.lights.enable();
     this.lights.setAmbientColor(0x333333);
-    this.focoPersonaje = this.lights.addLight(0, 0, 200).setColor(0xffffff).setIntensity(1.5);
+    this.focoPersonaje = this.lights.addLight(0, 0, 200).setColor(0xffffff).setIntensity(1.5); //la luz de perssonaje
     //esto es aburridisimo, voy a crear una lista para meter coordenadas y tamaños de los diferentes colisionadores (suelos o paredes).
     cursors = this.input.keyboard.createCursorKeys();
     plataforms = this.physics.add.staticGroup();
@@ -111,7 +111,7 @@ function create() {
     //situo los limites de la camara y del mundo
     this.physics.world.setBounds(0, 0, 3200, 1200);
     this.cameras.main.setBounds(0, 0, 3200, 1200);
-   
+    
     
     //le pongo una camara que siga al jugador, porque sino esto es pochisimo, y no se puede ni jugar.
     this.cameras.main.startFollow(player, true, 0.1, 0.1);

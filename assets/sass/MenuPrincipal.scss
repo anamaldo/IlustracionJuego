@@ -1,0 +1,64 @@
+@import "./partials/reset";
+@import "./partials/vars";
+@import "./partials/mixins";
+
+* {
+    border: 1px solid tomato;
+
+    overflow-y: hidden;
+}
+
+:root {
+   @include text;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color:rgb(87, 87, 87);
+    header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        h1 {
+            @include h1;
+            color: $white;
+
+        }
+    }
+
+    .Inicio {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;   
+
+        h2{
+            color: $white;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            margin: 1rem;
+        }
+        .start-button {
+            display: flex;
+            align-items: center;
+            color: $white;
+            font-size: 1.25rem;
+            line-height: 1.5rem;
+            margin: 1rem;
+            //border: 2px solid $white;
+            padding: 0.25rem 0.5rem 0.5rem;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+
+            &:hover {
+                background-color: $white;
+                color: $base-color;
+            }
+        }
+    }
+}
