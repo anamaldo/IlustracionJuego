@@ -6,7 +6,7 @@
 @import "./partials/footer";
 
 * {
-    border: 1px solid tomato;
+    //border: 1px solid tomato;
 
     overflow-y: hidden;
 }
@@ -22,29 +22,32 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    //background-color:rgb(87, 87, 87);
+    align-content:flex-start;  
+    background-color:rgb(59, 58, 63);
     
     .home {
         display: flex;
         flex-direction: column;
-        justify-content: center;   
-        
+        justify-content: center;
+        border: .25rem solid rgb(31, 30, 32);
         grid-column: 2 / 3;
         
     }
 
-    .paginaFondo {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1; /* Asegura que el fondo esté detrás del contenido */
-        
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Ajusta la imagen para cubrir toda el área */
-        }
-    }
+    // .paginaFondo {
+        // position: fixed;
+        // top: 0;
+        // left: 0;
+        // width: 100%;
+        // height: 100%;
+        // z-index: -1; /* Asegura que el fondo esté detrás del contenido */
+        // background-color: rgb(44, 44, 44);
+
+        // img {
+        //     width: 100%;
+        //     height: 100%;
+        //     object-fit: cover; /* Ajusta la imagen para cubrir toda el área */
+        //     //mix-blend-mode: multiply;
+        // }
+    //}
 }
