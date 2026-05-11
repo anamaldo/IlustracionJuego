@@ -27,34 +27,34 @@ const game = new Phaser.Game(config);
 
 function preload() {
     // Aquí cargo assets para el juego, como imágenes, sonidos, etc...
-    this.load.image('espacio', 'assets/img/FondoBien.png');
-    this.load.image('viga_300', 'assets/img/Plataformas300x25.png');
-    this.load.image('viga_700', 'assets/img/Plataformas700x25.png');
-    this.load.image('viga_100', 'assets/img/Plataformas100x25.png');
-    this.load.image('viga_140', 'assets/img/Plataformas140x25.png');
-    this.load.image('viga_420', 'assets/img/Plataformas420x25.png');
-    this.load.image('viga_x350', 'assets/img/Plataformas25x350.png');
-    this.load.image('viga_x200', 'assets/img/Plataformas25x200.png');
-    this.load.image('viga_x250', 'assets/img/Plataformas25x250.png');
-    this.load.image('viga_x550', 'assets/img/Plataformas25x550.png');
-    this.load.image('viga_x400', 'assets/img/Plataformas25x400.png');
+    this.load.image('espacio', './assets/img/FondoBien.png');
+    this.load.image('viga_300', './assets/img/Plataformas300x25.png');
+    this.load.image('viga_700', './assets/img/Plataformas700x25.png');
+    this.load.image('viga_100', './assets/img/Plataformas100x25.png');
+    this.load.image('viga_140', './assets/img/Plataformas140x25.png');
+    this.load.image('viga_420', './assets/img/Plataformas420x25.png');
+    this.load.image('viga_x350', './assets/img/Plataformas25x350.png');
+    this.load.image('viga_x200', './assets/img/Plataformas25x200.png');
+    this.load.image('viga_x250', './assets/img/Plataformas25x250.png');
+    this.load.image('viga_x550', './assets/img/Plataformas25x550.png');
+    this.load.image('viga_x400', './assets/img/Plataformas25x400.png');
     //Farolillos
-    this.load.image('Farolillo1_On', 'assets/img/ItemsFarolillo1.png');
-    this.load.image('Farolillo1_Off', 'assets/img/ItemsFarolillo1_F.png');
+    this.load.image('Farolillo1_On', './assets/img/ItemsFarolillo1.png');
+    this.load.image('Farolillo1_Off', './assets/img/ItemsFarolillo1_F.png');
 
-    this.load.spritesheet('player_run', 'assets/img/PersonajeAnimacionLateral.png', 
+    this.load.spritesheet('player_run', './assets/img/PersonajeAnimacionLateral.png', 
         { frameWidth: 64, 
         frameHeight: 64 
 
     });
 
-    this.load.spritesheet('player_idle', 'assets/img/PersobajeIdle.png',
+    this.load.spritesheet('player_idle', './assets/img/PersobajeIdle.png',
         { frameWidth: 64, 
         frameHeight: 64
     });
 
-    this.load.image('cartel', 'assets/img/ItemsCartel.png');
-    this.load.image('marco', 'assets/img/FondoMarco.png');
+    this.load.image('cartel', './assets/img/ItemsCartel.png');
+    this.load.image('marco', './assets/img/FondoMarco.png');
     
 
 };
