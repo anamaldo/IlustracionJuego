@@ -70,6 +70,18 @@ function create() {
     this.lights.enable().setAmbientColor(0x333333);
     this.focoPersonaje = this.lights.addLight(0, 0, 200).setColor(0xffffff).setIntensity(1.5); //la luz de perssonaje
     
+    //contador de farolillos 
+    this.totalFarolillos = 0;
+    this.farolillosEncendidos = 0;
+
+    this.textoContador = this.add.text(20, 20, 'Luces: 0 / 0', {
+        fontSize: '24px',
+        fill: '#ffaa00',
+        stroke: '#000000',
+        strokeThickness: 4,
+        fontWeight: 'bold'
+    }).setScrollFactor(0).setDepth(100);
+
     //los items
     this.items = new Items(this); 
     this.teclaE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
@@ -99,6 +111,8 @@ function create() {
     this.cameras.main.startFollow(playerObj.sprite, true, 0.1, 0.1);
 
     this.farolilloCercano = null;
+    
+
 };
 
 function update (){
@@ -137,18 +151,22 @@ function update (){
 
 function activarFarolillo(player, item) {
     if (item.tipo === 'Farolillo1' && !item.encendido) {
+        item.encendido = true;
+        this.farolillosEncendidos++; // Suma
+        this.actualizarInterfaz();   // Actualización
+
         this.indicadorInteraccion.setVisible(false);
 
         item.setTexture('Farolillo1_On'); // Cambia la textura para mostrar el farolillo encendido
         item.setPipeline('Light2D');
         
-        const luzFarolillo = this.lights.addLight(item.x, item.y, 150).setColor(0xffaa00).setIntensity(2);
+        const luzFarolillo = this.lights.addLight(item.x, item.y, 160).setColor(0xffaa00).setIntensity(1.5);
         
         this.tweens.add({
             targets: luzFarolillo,
-            intensity: { from: 1.5, to: 2.2 },
+            intensity: { from: 1.5, to: 1.8 },
             radius: { from: 155, to: 165 },
-            duration: 100,
+            duration: 200,
             yoyo: true,
             repeat: -1,
             onUpdate: () => {
@@ -156,6 +174,37 @@ function activarFarolillo(player, item) {
                 
             }
         });
+
+        //Comprobación
+        if (this.farolillosEncendidos === this.totalFarolillos) {
+            iluminacionTotal.call(this);
+        }
+
         this.cameras.main.flash(200, 255, 200, 0, 0.1);
     };
+};
+
+function iluminacionTotal() {
+    //recuperación de la luz ambiental original
+    this.tweens.addCounter({
+        from: 51,
+        to: 255,
+        duration: 6000,
+        onUpdate: (tween) => {
+            const v = Math.floor(tween.getValue());
+            this.lights.setAmbientColor(Phaser.Display.Color.GetColor(v, v, v));
+        }
+    });
+
+    this.add.text(400, 300, '¡Que empiece la Gran Verbena!', {
+        fontSize: '32px',
+        fill: '#ffaa00',
+        stroke: '#000000',
+        strokeThickness: 6
+    }).setOrigin(0.5).setScrollFactor(0).setDepth(200);
+
+};
+
+Phaser.Scene.prototype.actualizarInterfaz = function() {
+    this.textoContador.setText(`Luces: ${this.farolillosEncendidos} / ${this.totalFarolillos}`);
 };

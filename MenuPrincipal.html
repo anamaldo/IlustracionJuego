@@ -12,20 +12,23 @@
 <body>
     <header> 
         <!-- <p>Happy coding...</p> -->
-        <h1>Título del juego</h1>
+        <h1>Habitantes en la Villa</h1>
 
     </header>
-    <div class="Inicio" id="menu-container">
-        <h2>Bienvenido a la casa de los chisperos</h2>
-        <!-- <p>¡Prepárate para una aventura emocionante!</p> -->
-        <a href="/index.html" class="start-button">Comenzar juego</a>
+    <div class="Inicio" id="menuInicio">
+        <h2>Proyecto de representación de la cultura nacida en las casas de corrala madrileñas</h2>
+        <a href="/index.html" class="start-button" id="btn-jugar">Comenzar juego</a>
     </div>
-    <!-- <div class="home" id="game-container2">
-        
-    </div> -->
+    <div id="narrativaContainer" style="display: none;">
+        <div id="texto-narrativo"></div>
+        <p class="instruccion">Presiona [ESPACIO] para entrar a la corrala</p>
+    </div>
     <footer>
-        <p>&copy; 2023 Título del juego. Todos los derechos reservados.</p>
+        <p>&copy; 2023 Habitantes en la Villa. Todos los derechos reservados.</p>
     </footer>
+    <div class="paginaFondo">
+        <img src="./assets/img/TexturaFondo.png" alt="fondo texturizado para el juego">
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
     <script src="/app/MenuPrincipal.js"></script>
 </body>

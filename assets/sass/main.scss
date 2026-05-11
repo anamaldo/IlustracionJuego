@@ -24,6 +24,7 @@ body {
     height: 100vh;
     align-content:flex-start;  
     background-color:rgb(59, 58, 63);
+    gap: 4rem;
     
     .home {
         display: flex;
@@ -34,20 +35,20 @@ body {
         
     }
 
-    // .paginaFondo {
-        // position: fixed;
-        // top: 0;
-        // left: 0;
-        // width: 100%;
-        // height: 100%;
-        // z-index: -1; /* Asegura que el fondo esté detrás del contenido */
-        // background-color: rgb(44, 44, 44);
+    .paginaFondo {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* Asegura que el fondo esté detrás del contenido */
+        background-color: rgb(44, 44, 44);
 
-        // img {
-        //     width: 100%;
-        //     height: 100%;
-        //     object-fit: cover; /* Ajusta la imagen para cubrir toda el área */
-        //     //mix-blend-mode: multiply;
-        // }
-    //}
+        img {
+            width: 100%;
+            height: 100%;
+            
+            mix-blend-mode: multiply;
+        }
+    }
 }

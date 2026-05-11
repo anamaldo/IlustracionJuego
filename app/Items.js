@@ -1,5 +1,5 @@
 //carteles
-//bombillas 
+//farolillos 
 //mantillas
 //flores
 
@@ -24,7 +24,13 @@ export default class Items {
         listaItems.forEach(itemData => {
             this.crearItem(itemData);
         });
-    }
+
+        this.scene.totalFarolillos = listaItems.filter(item => item.tipo === 'Farolillo1').length; 
+        this.scene.actualizarInterfaz();
+
+    };
+ 
+    
 
     crearItem(itemData) {
         const yReal = this.scene.pY(itemData.ySuelo);
