@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => { //no sabía que al tenía 
     window.addEventListener('keydown', (e) => {
         //para saltar la narrativa 
         if (e.code === 'Space' && narrativaContainer.style.display === 'flex') {
-            window.location.href = 'index.html'; // Redirige al juego
+            window.location.href = 'Juego.html'; // Redirige al juego
         }
     });
 });

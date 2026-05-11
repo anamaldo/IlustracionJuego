@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Boiler</title>
     <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="./assets/css/MenuPrincipal.css">
-    <link href="./assets/css/MenuPrincipal.css.map">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link href="./assets/css/main.css.map">
     <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/x-icon">
     <!-- 
     git add .
@@ -18,27 +19,22 @@
     he decidido usas sass desde la terminal también, porque uso ordenadores distintos y asi lo tengo como una librería y no me vuelvo loca :) 
     -->
 </head>
+
 <body>
     <header> 
         <!-- <p>Happy coding...</p> -->
         <h1>Habitantes en la Villa</h1>
-
+        <a href="index.html">Menu</a>
     </header>
-    <div class="Inicio" id="menuInicio">
-        <h2>Proyecto de representación de la cultura nacida en las casas de corrala madrileñas</h2>
-        <a href="Juego.html" class="start-button" id="btn-jugar">Comenzar juego</a>
+    <div class="home" id="game-container1">
+        <!-- boiler -->
+        
     </div>
-    <div id="narrativaContainer" style="display: none;">
-        <div id="texto-narrativo"></div>
-        <p class="instruccion">Presiona [ESPACIO] para entrar a la corrala</p>
-    </div>
-    <footer>
-        <p>&copy; 2023 Habitantes en la Villa. Todos los derechos reservados.</p>
-    </footer>
     <div class="paginaFondo">
         <img src="./assets/img/TexturaFondo.png" alt="fondo texturizado para el juego">
     </div>
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
-    <script src="app/MenuPrincipal.js"></script>
+    <script type="module" src="app/main.js"></script>
 </body>
+
 </html>
