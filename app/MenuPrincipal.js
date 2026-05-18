@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => { //no sabía que al tenía 
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
 
-    const historia = "Madrid, 1850. La corrala de Tócame Roque ha quedado a oscuras. La gran verbena peligra... Recupera los cristales, enciende los 9 farolillos y devuelve la alegría a los habitantes.";
+    const historia = "Madrid, 1850, en una época de crisis y falta de viviendas las festividades se siguen manteniendo. Tu nombre es rix y has podido viajar al pasado tras tus investigaciones. Se está preparando la corrala para la presentación de una obra en la verbena. Ayuda los residentes y los artistas, enciende los 9 farolillos y devuelve la alegría a los habitantes.";
 
     //Narrativa con maquina de escribir
     if (!btnJugar || !menuInicio || !narrativaContainer || !textoElemento) {
