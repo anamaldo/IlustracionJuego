@@ -39,7 +39,7 @@ export default class Jugador {
     update() {
         // Lógica de movimiento
         if (this.cursors.left.isDown) {
-            this.sprite.body.setVelocityX(-260);
+            this.sprite.body.setVelocityX(-400);
             this.sprite.anims.play('correr', true);
             this.sprite.flipX = true;
         } 
